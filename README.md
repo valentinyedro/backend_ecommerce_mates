@@ -1,37 +1,70 @@
-# Proyecto de Proyecto de Software - Frontend E-Commerce Mates Berazategui
+# Proyecto Software - Backend E-Commerce Mates Berazategui
 
-Este repositorio contiene el frontend de una plataforma de e-commerce especializada en la venta de mates para el emprendimiento de Mates Berazategui. Fue desarrollado como parte de la materia Proyecto de Software. La aplicación sirve como capa de interfaz de usuario, permitiendo a los clientes navegar, seleccionar y comprar productos (la compra es ficticia).
+Este repositorio contiene el backend de una plataforma de e-commerce especializada en la venta de mates, desarrollada como parte de la materia Proyecto de Software. El sistema fue construido en **C#** siguiendo una arquitectura hexagonal, y proporciona la lógica de negocio, APIs y acceso a datos necesarios para una experiencia completa de comercio electrónico (las compras son ficticias).
 
-## Inicio del Proyecto
+## Propósito y Alcance
 
-Este proyecto está desarrollado en **C#** siguiendo una arquitectura **hexagonal**. Para iniciar la aplicación, simplemente ejecutá el siguiente comando desde la terminal:
+El objetivo de este backend es brindar soporte funcional a la plataforma de Mates Berazategui, permitiendo:
 
-```
-node app.js
-```
+- Consultar y gestionar productos.
+- Manejar información clientes.
+- Procesar pedidos.
+- Gestionar inventario.
 
-*Nota: Para poder ver los productos es necesario tener el backend y la base de datos (está en SQLServer) ejecutándose.*
+## ⚙️ Arquitectura del Sistema
 
-## Funcionalidades Destacadas
+El sistema sigue una arquitectura hexagonal, lo que permite separar responsabilidades y mantener el código organizado dividiendo la lógica en tres capas principales:
 
-1. **Navegación de Productos:** Los usuarios pueden buscar y explorar una lista de productos disponibles, con detalles e imágenes.
+- **Application**: Orquesta la lógica de negocio e interacciones entre componentes.
+- **Domain**: Contiene las entidades y reglas del negocio puro.
+- **Infrastructure**: Maneja detalles técnicos como acceso a base de datos.
 
-2. **Carrito de Compras:** Se permite agregar productos al carrito, modificar cantidades y visualizar el resumen de compra.
+---
 
-3. **Generación de Comprobante:** Se puede simular la compra a través del uso del carrito.
+## API Endpoints
 
-5. **Diseño Modular:** El frontend está organizado en componentes reutilizables, incluyendo encabezado, pie de página, tarjetas de producto, y formularios.
+A continuación se enumeran los endpoints disponibles en el backend:
 
-6. **Interacción con Backend:** A través de los endpoints de la API construida, la aplicación obtiene los datos de productos, gestiona el carrito y almacena la información de los clientes.
+### 🛒 Carrito
+
+- `PUT /api/carrito`  
+  Agrega un producto al carrito.
+
+- `PATCH /api/carrito`  
+  Actualiza la cantidad de un producto en el carrito.
+
+- `DELETE /api/carrito/{clientId}/{productId}`  
+  Elimina un producto específico del carrito de un cliente.
+
+### 👤 Clientes
+
+- `POST /api/clientes`  
+  Crea un nuevo cliente.
+
+### 📦 Orden
+
+- `POST /api/orden/{clientId}`  
+  Genera una orden a partir del carrito de un cliente.
+
+- `GET /api/orden`  
+  Lista todas las órdenes.
+
+### 🧉 Productos
+
+- `GET /api/productos`  
+  Obtiene la lista de productos disponibles.
+
+- `GET /api/productos/{id}`  
+  Obtiene los detalles de un producto específico.
 
 ## Contribuciones
 
-Se agradece cualquier contribución o sugerencia. Si deseas colaborar, podés hacer un *fork* del repositorio y enviar un *pull request* con tus cambios.
+Se agradece cualquier contribución o sugerencia. Si deseás colaborar, podés hacer un *fork* del repositorio y enviar un *pull request* con tus cambios.
 
 ## Contacto
 
-Para cualquier consulta, no dudes en contactarme:
+Para cualquier consulta, no dudes en contactarte:
 
-Valentín Yedro: vnyedro@gmail.com
+Valentin Yedro: vnyedro@gmail.com
 
-¡Gracias por visitar el repositorio! Espero que disfrutes explorando el e-commerce de Mates Berazategui.
+¡Gracias por visitar el repositorio! Espero que disfrutes explorando el backend del e-commerce de Mates Berazategui.
